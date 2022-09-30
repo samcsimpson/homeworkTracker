@@ -15,6 +15,7 @@ module.exports = {
       await Comment.create({
         comment: req.body.comment,
         post: req.params.id,
+        image: result.secure_url,
         cloudinaryId: result.public_id,
 
       });

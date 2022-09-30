@@ -4,6 +4,10 @@ const CommentSchema = new mongoose.Schema({
   comment: {
     type: String,
     required: true,
+  },  
+  image: {
+    type: String,
+    require: true,
   },
   cloudinaryId: {
     type: String,
