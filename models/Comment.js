@@ -7,10 +7,13 @@ const CommentSchema = new mongoose.Schema({
   },  
   image: {
     type: String,
-    require: true,
   },
   cloudinaryId: {
     type: String,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
   post: {
     type: mongoose.Schema.Types.ObjectId,

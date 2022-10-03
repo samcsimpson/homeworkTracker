@@ -5,8 +5,13 @@ const Comment = require("../models/Comment")
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      if(req.user.teacher == false) {
+        const posts = await Post.find({ user: req.user.id });
+        res.render("profile.ejs", { posts: posts, user: req.user });
+      } else {
+        const posts = await Post.find({ class: req.user.class });
+        res.render("profile.ejs", { posts: posts, user: req.user });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -30,12 +35,6 @@ module.exports = {
   },
   createPost: async (req, res) => {
     try {
-      console.log(1)
-      console.log(req)
-      console.log(2)
-      console.log(req.file)
-      console.log(3)
-      console.log(req.file.path)
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
 
@@ -57,14 +56,24 @@ module.exports = {
   deletePost: async (req, res) => {
     try {
       // Find post by id
+      console.log(req.params.id)
       let post = await Post.findById({ _id: req.params.id });
+      let comments = await Comment.find({ post: req.params.id });
+
       // Delete image from cloudinary
       await cloudinary.uploader.destroy(post.cloudinaryId);
       // Delete post from db
       await Post.remove({ _id: req.params.id });
+
+      // Delete associated comments from cloudinary and db
+      for(var i of comments) {
+        await cloudinary.uploader.destroy(i.cloudinaryId)
+        await Comment.remove({ post: i.post });
+      }
       console.log("Deleted Post");
       res.redirect("/profile");
     } catch (err) {
+      console.log(err)
       res.redirect("/profile");
     }
   },
