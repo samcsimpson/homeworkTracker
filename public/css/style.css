@@ -1,0 +1,8 @@
+.marked {
+    border: thick solid rgb(3, 203, 3);
+    border-radius: 25px;
+}
+.thumb {
+    height: 50%;
+    width: auto;
+}

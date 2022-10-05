@@ -5,14 +5,20 @@ module.exports = {
   createComment: async (req, res) => {
     try {
       const result = await cloudinary.uploader.upload(req.file.path);
-
+      
       await Comment.create({
         comment: req.body.comment,
         post: req.params.id,
         image: result.secure_url,
         cloudinaryId: result.public_id,
         user: req.user.id,
+        
       });
+      if(req.user.teacher == true) {
+        await Post.findOneAndUpdate({ _id: req.params.id },{
+            marked: true
+        })
+      }
       console.log("Comment has been added!");
       res.redirect("/post/"+req.params.id);
     } catch (err) {

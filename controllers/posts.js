@@ -1,6 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
-const Comment = require("../models/Comment")
+const Comment = require("../models/Comment");
+
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -9,17 +10,15 @@ module.exports = {
         const posts = await Post.find({ user: req.user.id });
         res.render("profile.ejs", { posts: posts, user: req.user });
       } else {
-        const posts = await Post.find({ class: req.user.class });
-        res.render("profile.ejs", { posts: posts, user: req.user });
+        const posts = await Post.find({ class: req.user.class }).sort({marked: 1, createdAt: 1});
+        count = posts.length
+        for (i of posts){
+          if (i.marked){
+            count--
+          }
+        }
+        res.render("profile.ejs", { posts: posts, user: req.user, count: count });
       }
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getFeed: async (req, res) => {
-    try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
     }
