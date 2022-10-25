@@ -1,8 +1,18 @@
+* {
+    background-color: #FFDA49;
+}
+
 .marked {
     border: thick solid rgb(3, 203, 3);
-    border-radius: 25px;
 }
 .thumb {
-    height: 50%;
-    width: auto;
+    border-radius: 25px;
+    aspect-ratio : 1 / 1;
+    height:50%;
+    transition: 0.3s;
+}
+.thumb:hover {opacity: 0.5}
+
+ul {
+    list-style-type: none;
 }

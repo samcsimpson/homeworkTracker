@@ -1,6 +1,9 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
+const User = require("../models/User");
+const fs = require('fs')
+const http = require('http'); // or 'https' for https:// URLs
 
 
 module.exports = {
@@ -27,7 +30,8 @@ module.exports = {
     try {
       const post = await Post.findById(req.params.id);
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: 'desc'}).lean();
-      res.render("post.ejs", { post: post, user: req.user, comments: comments });
+      const author = await User.findById(post.user);
+      res.render("post.ejs", { post: post, user: req.user, comments: comments, author: author.userName });
     } catch (err) {
       console.log(err);
     }
@@ -45,13 +49,13 @@ module.exports = {
         user: req.user.id,
         class: req.user.class,
       });
-      console.log(req.user.class)
       console.log("Post has been added!");
       res.redirect("/profile");
     } catch (err) {
       console.log(err);
     }
   },
+
   deletePost: async (req, res) => {
     try {
       // Find post by id
@@ -76,4 +80,5 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+  
 };
