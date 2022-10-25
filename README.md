@@ -37,13 +37,6 @@ Another vital optimisation involved database management. If a post gets deleted,
 
 ## Lessons Learned:
 
-No matter what your experience level, being an engineer means continuously learning. Every time you build something you always have those *whoa this is awesome* or * I did it!* moments. This is where you should share those moments! Recruiters and interviewers love to see that you're self-aware and passionate about growing.
-
-## Examples:
-Take a look at these couple examples that I have in my own portfolio:
-
-**Palettable:** https://github.com/alecortega/palettable
-
-**Twitter Battle:** https://github.com/alecortega/twitter-battle
-
-**Patch Panel:** https://github.com/alecortega/patch-panel
+This process has taught me a great deal about the kind of issues that can come up when storing information that needs to be accessed in different way by different parties. The checks that can be made when loading a page can ensure that the right information gets shown to the right people. 
+If I were to start this process again, I would find an alternative way to organise my posts and comments. For the current state of this site it works perfectly, however if I were to scale this up I would need to find a more streamlined way of storing and presenting the information.
+In addition, I would consult with a visual designer as I am much more confident with the backend aspects of software development!
