@@ -1,7 +1,7 @@
 # Your Homework Tracker
 This project was inspired by my time working as a teacher during lockdown. I wanted to develop a system that could store student's work and allow a teacher to return their work with improvements. I also sought to host this service on a simple and easy-to-use website. I have a achieved this with Homework Tracker, a complete package consisting of a wesbite, database and image cloud-storage service.
 
-**Link to project:** http://recruiters-love-seeing-live-demos.com/
+**Link to project:** http://homeworktracker.netlify.app
 
 ![Screenshot of profile page](https://i.ibb.co/419zC1m/frontpage.png)
 
@@ -30,9 +30,10 @@ Here the 'post' is a link to it's parent image. The great thing about this is th
 Noticing 'cloudinaryId' and 'image' appear on comments just like posts, this means that comments are stored in the exact same way as posts. Only their behaviour is different.
 
 ## Optimizations
-*(optional)*
 
-You don't have to include this section but interviewers *love* that you can not only deliver a final product that looks great but also functions efficiently. Did you write something then refactor it later and the result was 5x faster than the original implementation? Did you cache your assets? Things that you write in this section are **GREAT** to bring up in interviews and you can use this section as reference when studying for technical interviews!
+One complication that arose was the ability to delete posts. I settled on the choice for only teachers to be able to delete posts and comments. Students can only delete comments made by themselves. The primary reason for this is if a teacher comments on a student's homework and the student deletes that homework, the teacher's comment will be deleted also. To enact this, when a post is loaded, the site checks the 'teacher' value of the current user. If it is false, the delete button does not appear beneath the post.
+
+Another vital optimisation involved database management. If a post gets deleted, then what happens to the comments associated with them? Not only do they not get deleted, but also there is no way to access these as the post they are linked to has been deleted. To solve this issue, the deletePost function also deletes all comments associated with the given post.
 
 ## Lessons Learned:
 
