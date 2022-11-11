@@ -42,25 +42,26 @@
       </div>
     </header>
   <main class="form-signin col-4 m-auto">
-        <img class="mb-4" src="/imgs/book-icon.png" alt="book-icon" width="72" height="57">
-        <div class="form-floating">
-            <section class="mt-5">
-                <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-                <div class="alert alert-danger"><%= el.msg %></div>
-                <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-                messages.info.forEach( el => { %>
-                <div class="alert alert-info"><%= el.msg %></div>
-                <% }) %> <% } %>
-                <form action="/login" method="POST">
-                  <div class="mb-3">
-                    <input type="email" placeholder="User Name" style="background: rgba(255,255,255,0.4);" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" />
-                  </div>
-                  <div class="mb-3">
-                    <input type="password" placeholder="Password" style="background: rgba(255,255,255,0.4);" class="form-control" id="exampleInputPassword1" name="password" />
-                  </div>
-            </section>
-        </div>
-        <button class=" text-center w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    </main>
+    <img class="mb-4" src="/imgs/book-icon.png" alt="book-icon" width="72" height="57">
+    <div class="form-floating">
+      <section class="mt-5">
+        <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+        <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+        messages.info.forEach( el => { %>
+        <div class="alert alert-info"><%= el.msg %></div>
+        <% }) %> <% } %>
+        <form action="/login" method="POST">
+          <div class="mb-3">
+            <input type="email" placeholder="User Name" style="background: rgba(255,255,255,0.4);" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" />
+          </div>
+          <div class="mb-3">
+            <input type="password" placeholder="Password" style="background: rgba(255,255,255,0.4);" class="form-control" id="exampleInputPassword1" name="password" />
+          </div>
+        </form>
+      </section>
+    </div>
+    <button class=" text-center w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+  </main>
 
 <%- include('partials/footer') -%>
