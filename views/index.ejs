@@ -23,27 +23,26 @@
       integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css"/>
+    <style>
+      body {
+        background-image: url('/imgs/student.jpg');
+        background-position: center top;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    </style>
   </head>
   <body>
-    <header class="p-6">
-      <div class="row mt-5">
-        <div class="text-center col-12">
-          <h1 class=""><a href="/profile">Your Homework Tracker</a></h1>
-          <span>Get to work!</span>
+    <div class="py-5 my-5 w-50 mx-auto text-center" style="background-color:rgba(255,255,255,0.8); border-radius: 25px;">
+      <img class="d-block mx-auto mb-4" src="/imgs/book-icon.png" alt="" width="72" height="57">
+      <h1 class="display-5 fw-bold">Your Homework Tracker</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">The only way to stay connected with your classroom. Log in here or sign up today.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="/login" class="btn btn-primary btn-lg px-4 gap-3" role="button">Login</a>
+          <a href="/signup" class="btn btn-secondary btn-lg px-4" role="button">Signup</a>
         </div>
       </div>
-    </header>
-  </body>
-</html>
-
-
-<main class="px-5">
-    <div class="row justify-content-around p-5">
-        <a href="/login" class="col-3 btn btn-primary"> Login</a>
-        <a href="/signup" class="col-3 btn btn-primary"> Signup</a>
     </div>
-</main>
-    
-
 <%- include('partials/footer') -%>

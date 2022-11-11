@@ -30,9 +30,20 @@
                 <%}%>
             </li>
           <% } %>
+          <%if(comments.length == 0){ %>
+            <h4>This post has no feedback yet</h4>
+            <%}%>
         </ul>
-        <h2>Add a Comment</h2>
-          <form action="/comment/createComment/<%=post._id%>" method="POST" enctype="multipart/form-data">
+        <!-- Trigger/Open The Modal -->
+      <button id="myBtn" class="btn btn-secondary">Click here to add feedback</button>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="mt-5">
+            <h2>Add a Comment</h2>
+            <form action="/comment/createComment/<%=post._id%>" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="comment" class="form-label">Comment</label>
                 <input type="text" class="form-control" id="comment" name="comment">
@@ -43,6 +54,10 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
+          </div>
+        </div>
+      </div>
+        
       </div>
     </div>
   </div>

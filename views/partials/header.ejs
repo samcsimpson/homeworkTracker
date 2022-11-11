@@ -23,21 +23,20 @@
       integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css"/>
   </head>
   <body>
     <header class="p-6">
       <div class="ms-auto col-3 mt-5">
         <div class="d-flex flex-row-reverse px-5 justify-content-around">
-          <a href="/logout" class=" btn btn-primary">Logout</a>
-          <p>Welcome <a href="/profile"><strong><%= user.userName %></strong></a></p>
+          <a href="/logout" class=" btn btn-secondary">Logout</a>
+          <p>Welcome <a href="/profile" class="link-dark"><strong><%= user.userName %></strong></a></p>
         </div>
       </div>
-      <div class="row ">
+      <div class="row">
         <div class="text-center col-12">
-          <h1 class=""><a href="/profile">Your Homework Tracker</a></h1>
+          <h1 class="display-5"><a href="/profile" class="link-dark">Your Homework Tracker</a></h1>
         </div>
       </div>
     </header>
-  </body>
-</html>
+
